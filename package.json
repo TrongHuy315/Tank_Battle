@@ -1,0 +1,29 @@
+{
+  "name": "tank_battle",
+  "version": "1.0.0",
+  "description": "A classical tank battle game",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"hello tank battle!\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TrongHuy315/Tank_Battle.git"
+  },
+  "keywords": [
+    "tankbattle"
+  ],
+  "author": "summer_team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TrongHuy315/Tank_Battle/issues"
+  },
+  "homepage": "https://github.com/TrongHuy315/Tank_Battle#readme",
+  "dependencies": {
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.2",
+    "redis": "^5.6.0",
+    "socket.io": "^4.8.1"
+  }
+}
