@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tank Battle - Profile</title>
+    <link rel="stylesheet" href="../css/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">TANK BATTLE</div>
+        <nav>
+            <a id="home" href="../html/home.html">Home</a>
+            <a class="btn-secondary" href="../html/introduction.html">How to Play</a>
+            <a id="leaderboard" href="../html/leaderboard.html">Leaderboard</a>
+            <a id="community" href="#">Community</a>
+        </nav>
+    </header>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="avatar-section">
+                <img id="avatar" src="../images/default-avatar.png" alt="Player Avatar">
+                <button id="edit-profile" class="btn-primary">Edit Profile</button>
+            </div>
+            <div class="basic-info">
+                <h1 id="username">TankMaster123</h1>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">ID</span>
+                        <span id="user-id" class="value">12345</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Joined</span>
+                        <span id="join-date" class="value">July 23, 2025</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Rank</span>
+                        <span id="rank" class="value">Silver II</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <h2>Battle Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="icon">🎮</span>
+                    <h3>Total Battles</h3>
+                    <p id="total-battles">150</p>
+                </div>
+                <div class="stat-card">
+                    <span class="icon">⚔️</span>
+                    <h3>Wins/Losses</h3>
+                    <p><span id="wins">82</span>/<span id="losses">68</span></p>
+                </div>
+                <div class="stat-card">
+                    <span class="icon">📈</span>
+                    <h3>Win Rate</h3>
+                    <p id="win-rate">55%</p>
+                </div>
+                <div class="stat-card">
+                    <span class="icon">🏆</span>
+                    <h3>Total Points</h3>
+                    <p id="total-points">1250</p>
+                </div>
+                <div class="stat-card">
+                    <span class="icon">⚡</span>
+                    <h3>Best Streak</h3>
+                    <p id="best-streak">8</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-matches">
+            <h2>Recent Matches</h2>
+            <div id="matches-list">
+                <!-- Match history will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Tank Battle. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/profile.js"></script>
+</body>
+</html>

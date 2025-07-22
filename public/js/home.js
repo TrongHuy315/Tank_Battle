@@ -24,9 +24,9 @@ communityButton.addEventListener('click', () => {
 });
 
 for (let playNowButton of playNowButtons) {
-    console.log("hello");
     playNowButton.addEventListener('click', () => {
-        // Chuyển qua trang đăng nhập
+        // Sau khi đăng nhập thành công, chuyển đến trang profile
+        window.location.href = "/html/profile.html";
     });
 }
 
