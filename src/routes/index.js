@@ -1,5 +1,5 @@
-const demoRoutes = require('./demo.routes.js');
+const homeRoutes = require('./home.routes.js');
 
 module.exports = function (app) {
-    app.use('/api/demo', demoRoutes);
+    app.use('/home', homeRoutes);
 };
