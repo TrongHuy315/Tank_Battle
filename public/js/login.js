@@ -3,9 +3,8 @@ const homeButton = document.getElementById('home');
 const howToPlayButtons = document.getElementsByClassName('btn-secondary');
 const leaderboardButton = document.getElementById('leaderboard');
 const communityButton = document.getElementById('community');
-const playNowButton = document.getElementById('playnow');
 const logo = document.querySelector('.logo');
-const ctaButton = document.querySelector('.cta-section .btn-primary');
+const loginForm = document.getElementById('login-form');
 
 // Navigation
 homeButton.addEventListener('click', () => {
@@ -27,15 +26,20 @@ communityButton.addEventListener('click', () => {
     alert('Community feature coming soon!');
 });
 
-playNowButton.addEventListener('click', () => {
-    window.location.href = "../html/login.html";
-});
-
 logo.addEventListener('click', () => {
     window.location.href = "../html/home.html";
 });
 
-// CTA button
-ctaButton.addEventListener('click', () => {
-    window.location.href = "../html/profile.html";
+// Login Form Handling
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Giả lập đăng nhập thành công
+    // TODO: Thay thế bằng API call thực tế sau này
+    if (username && password) {
+        // Redirect to profile page after successful login
+        window.location.href = "../html/profile.html";
+    }
 });

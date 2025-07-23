@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #121212;
+    color: #f4f4f4;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1f1f1f;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #ff6a00;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: #ff6a00;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #ddd;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ff6a00;
+}
+
+.btn-secondary {
+    background: none;
+    border: 2px solid #ff6a00;
+    color: #ff6a00;
+    padding: 0.6rem 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #ff6a00;
+    color: #fff;
+}
+
+/* Register Page Specific Styles */
+.register-container {
+    max-width: 500px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.register-box {
+    background: #1f1f1f;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #333;
+    box-shadow: 0 0 20px rgba(255, 106, 0, 0.1);
+}
+
+.register-box h1 {
+    color: #ff6a00;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: #ddd;
+    font-size: 1rem;
+}
+
+.form-group input {
+    padding: 0.8rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #262626;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #ff6a00;
+}
+
+.btn-primary {
+    background-color: #ff6a00;
+    border: none;
+    color: #fff;
+    padding: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.btn-primary:hover {
+    background-color: #e55d00;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #888;
+}
+
+.login-link a {
+    color: #ff6a00;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #1f1f1f;
+    border-top: 2px solid #ff6a00;
+    margin-top: 2rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

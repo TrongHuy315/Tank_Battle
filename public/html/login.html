@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tank Battle - Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">TANK BATTLE</div>
+        <nav>
+            <a id="home" href="../html/home.html">Home</a>
+            <a class="btn-secondary" href="../html/introduction.html">How to Play</a>
+            <a id="leaderboard" href="../html/leaderboard.html">Leaderboard</a>
+            <a id="community" href="#">Community</a>
+        </nav>
+    </header>
+
+    <main class="login-container">
+        <div class="login-box">
+            <h1>Login to Battle</h1>
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+            <p class="register-link">
+                Don't have an account? <a href="../html/register.html">Register Now</a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Tank Battle. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/login.js"></script>
+</body>
+</html>

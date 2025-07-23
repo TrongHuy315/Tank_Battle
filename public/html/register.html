@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tank Battle - Register</title>
+    <link rel="stylesheet" href="../css/register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">TANK BATTLE</div>
+        <nav>
+            <a id="home" href="../html/home.html">Home</a>
+            <a class="btn-secondary" href="../html/introduction.html">How to Play</a>
+            <a id="leaderboard" href="../html/leaderboard.html">Leaderboard</a>
+            <a id="community" href="#">Community</a>
+        </nav>
+    </header>
+
+    <main class="register-container">
+        <div class="register-box">
+            <h1>Create Your Account</h1>
+            <form id="register-form" class="register-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <button type="submit" class="btn-primary">Create Account</button>
+            </form>
+            <p class="login-link">
+                Already have an account? <a href="../html/login.html">Login Here</a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Tank Battle. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/register.js"></script>
+</body>
+</html>
