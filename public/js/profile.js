@@ -7,17 +7,17 @@ const editProfileButton = document.getElementById('edit-profile');
 
 // Navigation
 homeButton.addEventListener('click', () => {
-    window.location.href = "/html/home.html";
+    window.location.href = "../html/home.html";
 });
 
 for (let howToPlayButton of howToPlayButtons) {
     howToPlayButton.addEventListener('click', () => {
-        window.location.href = "/html/introduction.html";
+        window.location.href = "../html/introduction.html";
     });
 }
 
 leaderboardButton.addEventListener('click', () => {
-    window.location.href = "/html/leaderboard.html";
+    window.location.href = "../html/leaderboard.html";
 });
 
 communityButton.addEventListener('click', () => {
@@ -31,16 +31,16 @@ editProfileButton.addEventListener('click', () => {
 
 // Mock data - Replace with actual API calls later
 const mockUserData = {
-    username: "TankMaster123",
-    userId: "12345",
-    joinDate: "July 23, 2025",
-    rank: "Silver II",
+    username: "Coderbian",
+    userId: "23120006",
+    joinDate: "Oct 5, 2005",
+    rank: "Master Chef",
     stats: {
-        totalBattles: 150,
-        wins: 82,
-        losses: 68,
-        points: 1250,
-        bestStreak: 8
+        totalBattles: 210,
+        wins: 105,
+        losses: 105,
+        points: 12400,
+        bestStreak: 12
     },
     recentMatches: [
         { opponent: "BattleKing", result: "win", score: "3-2" },

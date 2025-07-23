@@ -1,0 +1,292 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #121212;
+    color: #f4f4f4;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1f1f1f;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #ff6a00;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: #ff6a00;
+    font-weight: bold;
+}
+
+nav a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #ddd;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ff6a00;
+}
+
+.btn-primary {
+    background-color: #ff6a00;
+    border: none;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #e55d00;
+}
+
+.btn-secondary {
+    background: none;
+    border: 2px solid #ff6a00;
+    color: #ff6a00;
+    padding: 0.6rem 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #ff6a00;
+    color: #fff;
+}
+
+/* Introduction Page Specific Styles */
+.intro-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.intro-container h1 {
+    text-align: center;
+    color: #ff6a00;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.intro-section {
+    margin-bottom: 3rem;
+}
+
+.intro-section h2 {
+    color: #ff6a00;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.content-box {
+    background: #1f1f1f;
+    border-radius: 10px;
+    padding: 2rem;
+    border: 1px solid #333;
+}
+
+/* Controls Section */
+.control-grid {
+    display: grid;
+    grid-template-areas:
+        ". up ."
+        "left down right"
+        ". . .";
+    gap: 0.5rem;
+    max-width: 200px;
+    margin: 0 auto 2rem;
+}
+
+.key-btn {
+    background: #ff6a00;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.key-btn:hover {
+    transform: translateY(-2px);
+}
+
+.key-w { grid-area: up; }
+.key-a { grid-area: left; }
+.key-s { grid-area: down; }
+.key-d { grid-area: right; }
+
+/* Mouse styling */
+.mouse-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.mouse-icon {
+    width: 40px;
+    height: 60px;
+    border: 2px solid #ff6a00;
+    border-radius: 20px;
+    position: relative;
+    margin-right: 1rem;
+}
+
+.mouse-icon::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 10px;
+    background: #ff6a00;
+    border-radius: 2px;
+}
+
+/* Space bar styling */
+.space-control {
+    background: #ff6a00;
+    color: #fff;
+    padding: 0.8rem 4rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 300px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.space-control:hover {
+    transform: translateY(-2px);
+}
+
+.space-control::after {
+    content: 'Space';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Game Modes Section */
+.modes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.mode-card {
+    background: #262626;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #444;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.mode-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 106, 0, 0.3);
+}
+
+.mode-card h3 {
+    color: #ff6a00;
+    margin-bottom: 0.5rem;
+}
+
+/* Customization Section */
+.customization-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.custom-card {
+    background: #262626;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #444;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.custom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 106, 0, 0.3);
+}
+
+.custom-card h3 {
+    color: #ff6a00;
+    margin-bottom: 0.5rem;
+}
+
+/* Tips Section */
+.tips-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.tip-item {
+    display: flex;
+    align-items: center;
+    background: #262626;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #444;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tip-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 106, 0, 0.3);
+}
+
+.tip-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    margin: 4rem 0;
+}
+
+.cta-section .btn-primary {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    color: #888;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #1f1f1f;
+    border-top: 2px solid #ff6a00;
+    margin-top: 2rem;
+}

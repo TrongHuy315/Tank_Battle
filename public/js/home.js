@@ -6,17 +6,17 @@ const playNowButtons = document.getElementsByClassName('btn-primary');
 const logoButtons = document.getElementsByClassName('logo');
 
 homeButton.addEventListener('click', () => {
-    window.location.href = "/html/home.html";   // Hành động này được thực hiện cuối cùng trong hàm
+    window.location.href = "../html/home.html";   // Hành động này được thực hiện cuối cùng trong hàm
 });
 
 for (let howToPlayButton of howToPlayButtons) {
     howToPlayButton.addEventListener('click', () => {
-        window.location.href = "/html/introduction.html";   // Chưa có file html này
+        window.location.href = "../html/introduction.html";   // Chưa có file html này
     });
 }
 
 leaderboardButton.addEventListener('click', () => {
-    window.location.href = "/html/leaderboard.html";   // Chưa có file html này
+    window.location.href = "../html/leaderboard.html";   // Chưa có file html này
 });
 
 communityButton.addEventListener('click', () => {
@@ -26,12 +26,12 @@ communityButton.addEventListener('click', () => {
 for (let playNowButton of playNowButtons) {
     playNowButton.addEventListener('click', () => {
         // Sau khi đăng nhập thành công, chuyển đến trang profile
-        window.location.href = "/html/profile.html";
+        window.location.href = "../html/profile.html";
     });
 }
 
 for (let logoButton of logoButtons) {
     logoButton.addEventListener('click', () => {
-        window.location.href = "/html/home.html";
+        window.location.href = "../html/home.html";
     });
 }
