@@ -1,33 +1,29 @@
 // DOM Elements
-const homeButton = document.getElementById('home');
+const homeButtons = document.getElementsByClassName('home');
 const howToPlayButtons = document.getElementsByClassName('btn-secondary');
 const leaderboardButton = document.getElementById('leaderboard');
 const communityButton = document.getElementById('community');
-const logo = document.querySelector('.logo');
 const registerForm = document.getElementById('register-form');
 
-// Navigation
-homeButton.addEventListener('click', () => {
-    window.location.href = "../html/home.html";
-});
+for (let homeButton of homeButtons) {
+    homeButton.addEventListener('click', () => {
+        window.location.href = "/home";
+    });
+}
 
 for (let howToPlayButton of howToPlayButtons) {
     howToPlayButton.addEventListener('click', () => {
-        window.location.href = "../html/introduction.html";
+        window.location.href = "/introduction";
     });
 }
 
 leaderboardButton.addEventListener('click', () => {
-    window.location.href = "../html/leaderboard.html";
+    window.location.href = "/leaderboard";
 });
 
 communityButton.addEventListener('click', () => {
     // Community page logic (to be implemented)
     alert('Community feature coming soon!');
-});
-
-logo.addEventListener('click', () => {
-    window.location.href = "../html/home.html";
 });
 
 // Register Form Handling

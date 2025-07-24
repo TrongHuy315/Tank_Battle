@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+
 const initRoutes = require('./routes');
-// const initSocket = require('./socket');
+const initSocket = require('./socket');
 // const { connectMySQL } = require('./models');
 // const redisClient = require('./redis');
 
-async function startApp() {
+async function startApp(server) {
     // await connectMySQL();
 
     // connect redis and throw console.error
@@ -16,6 +17,7 @@ async function startApp() {
 
     app.use(express.static(path.join(__dirname, '../public')));
 
+    initSocket(server);
     initRoutes(app);
     // initSocket(server);
 }

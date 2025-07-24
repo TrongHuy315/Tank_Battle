@@ -1,1 +1,2 @@
-// thực hiện kết nối db
+// TODO: thực hiện kết nối db
+// ORM

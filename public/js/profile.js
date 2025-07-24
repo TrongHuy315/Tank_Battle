@@ -1,23 +1,24 @@
 // DOM Elements
-const homeButton = document.getElementById('home');
+const homeButtons = document.getElementsByClassName('home');
 const howToPlayButtons = document.getElementsByClassName('btn-secondary');
 const leaderboardButton = document.getElementById('leaderboard');
 const communityButton = document.getElementById('community');
 const editProfileButton = document.getElementById('edit-profile');
 
-// Navigation
-homeButton.addEventListener('click', () => {
-    window.location.href = "../html/home.html";
-});
+for (let homeButton of homeButtons) {
+    homeButton.addEventListener('click', () => {
+        window.location.href = "/home";
+    });
+}
 
 for (let howToPlayButton of howToPlayButtons) {
     howToPlayButton.addEventListener('click', () => {
-        window.location.href = "../html/introduction.html";
+        window.location.href = "/introduction";
     });
 }
 
 leaderboardButton.addEventListener('click', () => {
-    window.location.href = "../html/leaderboard.html";
+    window.location.href = "/leaderboard";
 });
 
 communityButton.addEventListener('click', () => {

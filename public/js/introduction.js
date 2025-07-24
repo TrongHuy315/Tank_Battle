@@ -1,25 +1,25 @@
 // DOM Elements
-const homeButton = document.getElementById('home');
+const homeButtons = document.getElementsByClassName('home');
 const howToPlayButtons = document.getElementsByClassName('btn-secondary');
 const leaderboardButton = document.getElementById('leaderboard');
 const communityButton = document.getElementById('community');
 const playNowButton = document.getElementById('playnow');
-const logo = document.querySelector('.logo');
 const ctaButton = document.querySelector('.cta-section .btn-primary');
 
-// Navigation
-homeButton.addEventListener('click', () => {
-    window.location.href = "../html/home.html";
-});
+for (let homeButton of homeButtons) {
+    homeButton.addEventListener('click', () => {
+        window.location.href = "/home";
+    });
+}
 
 for (let howToPlayButton of howToPlayButtons) {
     howToPlayButton.addEventListener('click', () => {
-        window.location.href = "../html/introduction.html";
+        window.location.href = "/introduction";
     });
 }
 
 leaderboardButton.addEventListener('click', () => {
-    window.location.href = "../html/leaderboard.html";
+    window.location.href = "/leaderboard";
 });
 
 communityButton.addEventListener('click', () => {
@@ -28,14 +28,10 @@ communityButton.addEventListener('click', () => {
 });
 
 playNowButton.addEventListener('click', () => {
-    window.location.href = "../html/login.html";
-});
-
-logo.addEventListener('click', () => {
-    window.location.href = "../html/home.html";
+    window.location.href = "/login";
 });
 
 // CTA button
 ctaButton.addEventListener('click', () => {
-    window.location.href = "../html/profile.html";
+    window.location.href = "/profile";
 });
