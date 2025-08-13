@@ -1,0 +1,41 @@
+/* Game Container */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gameCanvas {
+  border: 2px solid #444;
+  background: #000;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+}
+
+/* Game UI */
+.game-ui {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #0f0;
+  font-size: 18px;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+}
+
+#score, #health {
+  margin-bottom: 10px;
+}
+
+/* TODO: Add styles for game menu, game over screen, etc. */
+/* TODO: Add responsive design for different screen sizes */
+/* TODO: Add animations for UI elements */
