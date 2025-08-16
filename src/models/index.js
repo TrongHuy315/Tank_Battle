@@ -1,2 +1,4 @@
-// TODO: thực hiện kết nối db
-// ORM
+require('./db.models.js');
+require('./users.model.js')
+
+console.log("DB is prepared!");

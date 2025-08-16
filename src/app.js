@@ -7,6 +7,8 @@ const initSocket = require('./socket');
 // const { connectMySQL } = require('./models');
 // const redisClient = require('./redis');
 
+require('./models/index.js');
+
 async function startApp(server) {
     // await connectMySQL();
 

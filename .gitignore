@@ -1,6 +1,3 @@
 node_modules
 *.txt
 *.env
-chat.js
-chat.html
-chat.routes.js

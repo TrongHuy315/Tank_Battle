@@ -1,4 +1,4 @@
-// Thực hiện cấu hình MySQL
+require('dotenv').config()
 
 module.exports = {
     mysql: {

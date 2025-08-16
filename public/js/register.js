@@ -27,7 +27,7 @@ communityButton.addEventListener('click', () => {
 });
 
 // Register Form Handling
-registerForm.addEventListener('submit', (e) => {
+registerForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const username = document.getElementById('username').value;
@@ -60,8 +60,23 @@ registerForm.addEventListener('submit', (e) => {
         return;
     }
 
-    // TODO: Replace with actual API call
-    // Giả lập đăng ký thành công
-    alert('Registration successful! Please log in.');
-    window.location.href = "../html/login.html";
+    const formData = {
+        username: username,
+        email: email,
+        password: password
+    }
+
+    try {
+        const res = await fetch("/register", {
+            method: "POST",
+            headers:  {"Content-Type": "application/json"},
+            body: JSON.stringify(formData)
+        });
+
+        const data = await res.json();
+        alert(data + ' Please log in.');
+        window.location.href = "/login";
+    } catch (err) {
+        console.log("Error: " + err);
+    }
 });

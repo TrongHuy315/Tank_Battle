@@ -27,15 +27,27 @@ communityButton.addEventListener('click', () => {
 });
 
 // Login Form Handling
-loginForm.addEventListener('submit', (e) => {
+loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    // Giả lập đăng nhập thành công
-    // TODO: Thay thế bằng API call thực tế sau này
-    if (username && password) {
-        // Redirect to profile page after successful login
-        window.location.href = "/profile";
+    try {
+        const formData = {
+            username: username,
+            password: password
+        }
+
+        const res = await fetch("/login", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(formData),
+        });
+
+        const data = await res.json();
+        alert(data);
+        window.location.href("/profile");
+    } catch (err) {
+        console.log("Error: " + err);
     }
 });
