@@ -1,0 +1,150 @@
+/**
+ * Animations for Tank Battle game
+ */
+
+/* Explosion animation */
+@keyframes explosion {
+  0% { 
+    transform: scale(0.1); 
+    opacity: 0.8; 
+  }
+  50% { 
+    transform: scale(1.0); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: scale(1.5); 
+    opacity: 0; 
+  }
+}
+
+.explosion {
+  animation: explosion 0.5s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Bullet flash animation */
+@keyframes bulletFlash {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.bullet-flash {
+  animation: bulletFlash 0.2s ease infinite;
+}
+
+/* Tank damage animation */
+@keyframes tankDamage {
+  0% { filter: brightness(1); }
+  25% { filter: brightness(2) saturate(2) hue-rotate(330deg); }
+  50% { filter: brightness(1); }
+  75% { filter: brightness(2) saturate(2) hue-rotate(330deg); }
+  100% { filter: brightness(1); }
+}
+
+.tank-damaged {
+  animation: tankDamage 0.5s ease-out forwards;
+}
+
+/* Power-up bobbing animation */
+@keyframes powerupBob {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.powerup {
+  animation: powerupBob 1.5s ease-in-out infinite;
+}
+
+/* Power-up collection animation */
+@keyframes powerupCollect {
+  0% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: scale(2); 
+    opacity: 0; 
+  }
+}
+
+.powerup-collect {
+  animation: powerupCollect 0.3s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Level transition animation */
+@keyframes levelTransition {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.level-transition {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: levelTransition 2s ease-in-out forwards;
+  pointer-events: none;
+}
+
+/* Button hover animation */
+@keyframes buttonHover {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+.game-button:hover {
+  animation: buttonHover 0.2s ease forwards;
+}
+
+/* Score increase animation */
+@keyframes scoreIncrease {
+  0% { 
+    transform: scale(1); 
+    color: white; 
+  }
+  50% { 
+    transform: scale(1.2); 
+    color: #ffcc00; 
+  }
+  100% { 
+    transform: scale(1); 
+    color: white; 
+  }
+}
+
+.score-increase {
+  animation: scoreIncrease 0.5s ease-out forwards;
+}
+
+/* Tank movement dust particles */
+@keyframes dustParticle {
+  0% {
+    opacity: 0.7;
+    transform: translate(0, 0) scale(0.7);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x-offset), var(--y-offset)) scale(0);
+  }
+}
+
+.dust-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #d3d3d3;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: dustParticle 0.7s ease-out forwards;
+}

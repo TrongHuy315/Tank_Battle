@@ -1,6 +1,5 @@
 /**
  * Map handling for Tank Battle game
- * Handles map rendering and collision detection with map objects
  */
 
 class GameMap {
@@ -88,9 +87,11 @@ class GameMap {
   
   /**
    * Render the map
-   * @param {CanvasRenderingContext2D} ctx - Canvas rendering context
+   * @param {Renderer} renderer - Renderer instance
    */
-  render(ctx) {
+  render(renderer) {
+    const ctx = renderer.getContext();
+    
     // Draw the base (grass) layer
     ctx.fillStyle = '#228B22'; // Forest green
     ctx.fillRect(0, 0, this.width * this.tileSize, this.height * this.tileSize);
@@ -155,8 +156,3 @@ class GameMap {
     return this.obstacles;
   }
 }
-
-// TODO: Add support for multi-layer maps (background, obstacles, decorations)
-// TODO: Add destructible environment elements
-// TODO: Add map editor for easy level creation
-// TODO: Add support for loading maps from JSON files

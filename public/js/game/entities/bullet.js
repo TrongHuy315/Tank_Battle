@@ -1,5 +1,5 @@
 /**
- * Bullet handling for Tank Battle game
+ * Bullet entity for Tank Battle game
  */
 
 class Bullet {
@@ -23,7 +23,7 @@ class Bullet {
     this.radius = 3; // Bullet radius in pixels
     
     // Calculate velocity based on angle
-    const radians = degreesToRadians(angle);
+    const radians = Utils.degreesToRadians(angle);
     this.vx = Math.cos(radians) * speed;
     this.vy = Math.sin(radians) * speed;
   }
@@ -42,27 +42,21 @@ class Bullet {
   
   /**
    * Render bullet
-   * @param {CanvasRenderingContext2D} ctx - Canvas rendering context
+   * @param {Renderer} renderer - Renderer instance
    */
-  render(ctx) {
+  render(renderer) {
     if (!this.active) return;
     
-    ctx.fillStyle = '#FFFF00'; // Yellow
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fill();
+    // Draw bullet
+    renderer.drawCircle(this.x, this.y, this.radius, '#FFFF00');
     
     // Optional: Add a trail effect
-    ctx.fillStyle = 'rgba(255, 255, 0, 0.5)';
-    ctx.beginPath();
-    ctx.arc(
+    renderer.drawCircle(
       this.x - this.vx * 0.1,
       this.y - this.vy * 0.1,
       this.radius * 0.7,
-      0,
-      Math.PI * 2
+      'rgba(255, 255, 0, 0.5)'
     );
-    ctx.fill();
   }
   
   /**
@@ -141,7 +135,7 @@ class BulletManager {
         if (tank === bullet.owner) continue;
         
         const tankBox = tank.getCollisionBox();
-        if (rectsOverlap(bulletBox, tankBox)) {
+        if (Physics.rectsOverlap(bulletBox, tankBox)) {
           tank.takeDamage(bullet.damage);
           bullet.deactivate();
           break;
@@ -155,11 +149,11 @@ class BulletManager {
   
   /**
    * Render all bullets
-   * @param {CanvasRenderingContext2D} ctx - Canvas rendering context
+   * @param {Renderer} renderer - Renderer instance
    */
-  render(ctx) {
+  render(renderer) {
     for (const bullet of this.bullets) {
-      bullet.render(ctx);
+      bullet.render(renderer);
     }
   }
   
@@ -170,7 +164,3 @@ class BulletManager {
     this.bullets = [];
   }
 }
-
-// TODO: Add different bullet types (normal, explosive, etc)
-// TODO: Add bullet collision effects (explosions, etc)
-// TODO: Add bullet penetration through multiple targets

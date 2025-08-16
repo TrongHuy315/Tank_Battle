@@ -1,5 +1,5 @@
 /**
- * Tank class for Tank Battle game
+ * Tank entity for Tank Battle game
  */
 
 class Tank {
@@ -7,7 +7,7 @@ class Tank {
    * Create a new tank
    * @param {number} x - Initial X position
    * @param {number} y - Initial Y position
-   * @param {number} direction - Initial direction (0-3, see DIRECTION in utils.js)
+   * @param {number} direction - Initial direction in degrees
    * @param {string} color - Tank color
    * @param {boolean} isPlayer - Whether this tank is controlled by the player
    */
@@ -66,7 +66,7 @@ class Tank {
     
     // Handle movement
     if (this.moving) {
-      const radians = degreesToRadians(this.direction);
+      const radians = Utils.degreesToRadians(this.direction);
       const nextX = this.x + Math.cos(radians) * this.speed * deltaTime;
       const nextY = this.y + Math.sin(radians) * this.speed * deltaTime;
       
@@ -137,7 +137,7 @@ class Tank {
       
       const otherBox = otherTank.getCollisionBox();
       
-      if (rectsOverlap(myBox, otherBox)) {
+      if (Physics.rectsOverlap(myBox, otherBox)) {
         return true;
       }
     }
@@ -147,16 +147,17 @@ class Tank {
   
   /**
    * Render the tank
-   * @param {CanvasRenderingContext2D} ctx - Canvas rendering context
+   * @param {Renderer} renderer - Renderer instance
    */
-  render(ctx) {
+  render(renderer) {
     if (!this.alive) return;
     
+    const ctx = renderer.getContext();
     ctx.save();
     
     // Move to tank position and rotate
     ctx.translate(this.x, this.y);
-    ctx.rotate(degreesToRadians(this.direction));
+    ctx.rotate(Utils.degreesToRadians(this.direction));
     
     // Draw tank body
     ctx.fillStyle = this.color;
@@ -173,28 +174,26 @@ class Tank {
     ctx.restore();
     
     // Draw health bar above tank
-    this.renderHealthBar(ctx);
+    this.renderHealthBar(renderer);
   }
   
   /**
    * Render tank health bar
-   * @param {CanvasRenderingContext2D} ctx - Canvas rendering context
+   * @param {Renderer} renderer - Renderer instance
    */
-  renderHealthBar(ctx) {
+  renderHealthBar(renderer) {
     const barWidth = 30;
     const barHeight = 4;
     const barX = this.x - barWidth / 2;
     const barY = this.y - this.height / 2 - 10;
     
     // Background
-    ctx.fillStyle = '#333';
-    ctx.fillRect(barX, barY, barWidth, barHeight);
+    renderer.drawRect(barX, barY, barWidth, barHeight, '#333');
     
     // Health
     const healthPercent = this.health / this.maxHealth;
     const healthColor = healthPercent > 0.6 ? '#00FF00' : healthPercent > 0.3 ? '#FFFF00' : '#FF0000';
-    ctx.fillStyle = healthColor;
-    ctx.fillRect(barX, barY, barWidth * healthPercent, barHeight);
+    renderer.drawRect(barX, barY, barWidth * healthPercent, barHeight, healthColor);
   }
   
   /**
@@ -251,7 +250,7 @@ class Tank {
     this.fireTimer = 1 / this.fireRate;
     
     // Calculate bullet spawn position (at the end of barrel)
-    const radians = degreesToRadians(this.direction);
+    const radians = Utils.degreesToRadians(this.direction);
     const spawnDistance = this.height / 2 + 15;
     const bulletX = this.x + Math.cos(radians) * spawnDistance;
     const bulletY = this.y + Math.sin(radians) * spawnDistance;
@@ -308,8 +307,3 @@ class Tank {
     this.fireTimer = 0;
   }
 }
-
-// TODO: Add different tank types with varying stats
-// TODO: Add tank power-ups (speed boost, shield, etc)
-// TODO: Add tank animations for movement, firing, and damage
-// TODO: Add tank customization options

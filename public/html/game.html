@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tank Battle - Game</title>
   <link rel="stylesheet" href="../css/game/game.css">
+  <link rel="stylesheet" href="../css/game/ui.css">
+  <link rel="stylesheet" href="../css/game/animations.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -18,12 +20,26 @@
   </div>
 
   <!-- Scripts -->
-  <script src="../js/game/utils.js"></script>
+  <!-- Engine -->
+  <script src="../js/engine/utils.js"></script>
+  <script src="../js/engine/renderer.js"></script>
+  <script src="../js/engine/input.js"></script>
+  <script src="../js/engine/physics.js"></script>
+  <script src="../js/engine/assets.js"></script>
+  
+  <!-- Game -->
+  <script src="../js/game/constants/gameConstants.js"></script>
+  <script src="../js/game/config.js"></script>
   <script src="../js/game/assets.js"></script>
-  <script src="../js/game/map.js"></script>
-  <script src="../js/game/bullet.js"></script>
-  <script src="../js/game/tank.js"></script>
-  <script src="../js/game/collision.js"></script>
+  <script src="../js/game/maps/map.js"></script>
+  <script src="../js/game/maps/mapLoader.js"></script>
+  <script src="../js/game/entities/bullet.js"></script>
+  <script src="../js/game/entities/tank.js"></script>
+  <script src="../js/game/ui/hud.js"></script>
+  <script src="../js/game/scenes/scene.js"></script>
+  <script src="../js/game/scenes/menuScene.js"></script>
+  <script src="../js/game/scenes/gameScene.js"></script>
+  <script src="../js/game/core/gameManager.js"></script>
   <script src="../js/game/main.js"></script>
 </body>
 </html>
