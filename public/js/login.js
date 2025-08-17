@@ -45,8 +45,12 @@ loginForm.addEventListener('submit', async (e) => {
         });
 
         const data = await res.json();
-        alert(data);
-        window.location.href("/profile");
+        if (res.ok && data.token) {
+            localStorage.setItem("token", data.token);
+            window.location.href = "/profile";
+        } else {
+            alert("Login Failed!");
+        }
     } catch (err) {
         console.log("Error: " + err);
     }

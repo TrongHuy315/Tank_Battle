@@ -1,4 +1,7 @@
+const jwt = require('jsonwebtoken');
+
 const USER = require('../models/users.model.js');
+const appConfig = require('../config/app.config.js');
 
 exports.login = async (req, res) => {
     try {
@@ -8,7 +11,10 @@ exports.login = async (req, res) => {
 
         await USER.check(username, password);
 
-        res.status(201).json({message: "Login Successfully!"});
+        const user = {username};
+
+        const token = jwt.sign(user, appConfig.jwtSecret, { expiresIn: "1h" });
+        return res.status(200).json({token: token, message: "Login Successfully!"});
     } catch (err) {
         return res.status(500).json({message: "Error Server!"});
     }

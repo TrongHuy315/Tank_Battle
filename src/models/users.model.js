@@ -32,8 +32,10 @@ const USER = {
             const query = "SELECT * FROM users WHERE username = ? AND password = ?";
             connection.query(query, [username, password], (err, result) => {
                 if (err) return reject(err);
+                
+                if (result.length == 0) return reject(new Error("Invalid credentials!"));
 
-                resolve(result);
+                resolve(result[0]);
             })
         })
     }

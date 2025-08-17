@@ -1,4 +1,29 @@
-// DOM Elements
+window.addEventListener("load", async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("Please log in first!");
+        window.location.href = "/login";
+        return;
+    }
+
+    // console.log(localStorage.getItem("token"));
+
+    try {
+        const res = await fetch("/auth/profile", {
+            headers: {"Authorization": `Bearer ${token}`}
+        });
+
+        if (!res.ok) throw new Error("Unauthorized!");
+
+        const userData = await res.json();
+        updateProfile(userData);
+    } catch (err) {
+        alert("Session expired! Please log in again!");
+        localStorage.removeItem("token");
+        window.location.href = "/login";
+    }
+})
+
 const homeButtons = document.getElementsByClassName('home');
 const howToPlayButtons = document.getElementsByClassName('btn-secondary');
 const leaderboardButton = document.getElementById('leaderboard');
@@ -30,28 +55,6 @@ editProfileButton.addEventListener('click', () => {
     alert('Edit profile feature coming soon!');
 });
 
-// Mock data - Replace with actual API calls later
-const mockUserData = {
-    username: "Coderbian",
-    userId: "23120006",
-    joinDate: "Oct 5, 2005",
-    rank: "Master Chef",
-    stats: {
-        totalBattles: 210,
-        wins: 105,
-        losses: 105,
-        points: 12400,
-        bestStreak: 12
-    },
-    recentMatches: [
-        { opponent: "BattleKing", result: "win", score: "3-2" },
-        { opponent: "TankLegend", result: "loss", score: "1-3" },
-        { opponent: "WarMachine", result: "win", score: "3-0" },
-        { opponent: "SteelTitan", result: "win", score: "3-1" },
-        { opponent: "IronHeart", result: "loss", score: "2-3" }
-    ]
-};
-
 // Update profile information
 function updateProfile(userData) {
     // Update basic info
@@ -64,8 +67,7 @@ function updateProfile(userData) {
     document.getElementById('total-battles').textContent = userData.stats.totalBattles;
     document.getElementById('wins').textContent = userData.stats.wins;
     document.getElementById('losses').textContent = userData.stats.losses;
-    document.getElementById('win-rate').textContent = 
-        Math.round((userData.stats.wins / userData.stats.totalBattles) * 100) + '%';
+    document.getElementById('win-rate').textContent = Math.round((userData.stats.wins / userData.stats.totalBattles) * 100) + '%';
     document.getElementById('total-points').textContent = userData.stats.points;
     document.getElementById('best-streak').textContent = userData.stats.bestStreak;
 
@@ -83,9 +85,3 @@ function updateProfile(userData) {
         matchesList.appendChild(matchElement);
     });
 }
-
-// Load profile data when page loads
-window.addEventListener('load', () => {
-    // In the future, this should fetch real data from the server
-    updateProfile(mockUserData);
-});
