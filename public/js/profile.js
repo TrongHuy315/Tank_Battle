@@ -10,12 +10,13 @@ window.addEventListener("load", async () => {
 
     try {
         const res = await fetch("/auth/profile", {
-            headers: {"Authorization": `Bearer ${token}`}
+            headers: {"Authorization": `Bearer ${token}`},
         });
 
         if (!res.ok) throw new Error("Unauthorized!");
 
         const userData = await res.json();
+
         updateProfile(userData);
     } catch (err) {
         alert("Session expired! Please log in again!");

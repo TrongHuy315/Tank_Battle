@@ -28,6 +28,8 @@ communityButton.addEventListener('click', () => {
 for (let playNowButton of playNowButtons) {
     playNowButton.addEventListener('click', () => {
         // Chuyển đến trang đăng nhập
-        window.location.href = "/login";
+        if (!localStorage.getItem("token")) window.location.href = "/login";
+
+        window.location.href = "/profile";
     });
 }
