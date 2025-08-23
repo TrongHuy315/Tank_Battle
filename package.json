@@ -4,7 +4,11 @@
   "description": "A classical tank battle game",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"hello tank battle!\""
+    "test": "echo \"hello tank battle!\"",
+    "start": "node server.js",
+    "dev": "npm run build:client && npm run start",
+    "build:client": "node build-client.js",
+    "build": "npm run build:client"
   },
   "repository": {
     "type": "git",
