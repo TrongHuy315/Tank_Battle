@@ -23,7 +23,8 @@ class Bullet {
     this.radius = 3; // Bullet radius in pixels
     
     // Calculate velocity based on angle
-    const radians = degreesToRadians(angle);
+    const adjustAngle = angle - 90;
+    const radians = degreesToRadians(adjustAngle);
     this.vx = Math.cos(radians) * speed;
     this.vy = Math.sin(radians) * speed;
   }
@@ -53,7 +54,7 @@ class Bullet {
     ctx.fill();
     
     // Optional: Add a trail effect
-    ctx.fillStyle = 'rgba(255, 255, 0, 0.5)';
+    // ctx.fillStyle = 'rgba(255, 255, 0, 0.5)';
     ctx.beginPath();
     ctx.arc(
       this.x - this.vx * 0.1,
@@ -90,6 +91,9 @@ class Bullet {
  * Manages all bullets in the game
  */
 class BulletManager {
+  /**
+   * @param {Array<Bullet>} bullets - Array of the bullets
+   */
   constructor() {
     this.bullets = [];
   }

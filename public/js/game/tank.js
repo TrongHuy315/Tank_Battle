@@ -2,6 +2,10 @@
  * Tank class for Tank Battle game
  */
 
+// Import Một số phương thức của Utils vào, Utils 
+
+
+
 class Tank {
   /**
    * Create a new tank
@@ -11,6 +15,7 @@ class Tank {
    * @param {string} color - Tank color
    * @param {boolean} isPlayer - Whether this tank is controlled by the player
    */
+
   constructor(x, y, direction, color, isPlayer = false) {
     // Position and movement
     this.x = x;
@@ -18,8 +23,9 @@ class Tank {
     this.direction = direction;
     this.speed = 100; // Pixels per second
     this.rotationSpeed = 180; // Degrees per second
-    this.width = 30;
-    this.height = 40;
+    // Chiều dài, chiều rộng của xe tank
+    this.width = 20; 
+    this.height = 30;
     
     // Visuals
     this.color = color;
@@ -28,7 +34,7 @@ class Tank {
     // Game state
     this.health = 100;
     this.maxHealth = 100;
-    this.alive = true;
+    this.alive = true; // Xe tăng còn sống hay không?
     this.score = 0;
     
     // Weapons
@@ -40,6 +46,7 @@ class Tank {
     // Movement state
     this.moving = false;
     this.turning = 0; // -1 = left, 0 = not turning, 1 = right
+    this.moveDirection = 0; // Biến này để lưu hướng di chuyển, 1: tới, -1: lui
   }
   
   /**
@@ -93,7 +100,7 @@ class Tank {
     const halfWidth = this.width / 2;
     const halfHeight = this.height / 2;
     
-    // Check all four corners
+    // Check all four corners of the tank
     const corners = [
       { x: nextX - halfWidth, y: nextY - halfHeight }, // Top-left
       { x: nextX + halfWidth, y: nextY - halfHeight }, // Top-right
@@ -101,7 +108,10 @@ class Tank {
       { x: nextX + halfWidth, y: nextY + halfHeight }  // Bottom-right
     ];
     
-    // If any corner is in a wall, collision detected
+    // Also check center point for better collision detection
+    corners.push({ x: nextX, y: nextY });
+    
+    // If any corner or center is in a wall, collision detected
     for (const corner of corners) {
       if (gameMap.isWall(corner.x, corner.y)) {
         return true;
@@ -251,7 +261,8 @@ class Tank {
     this.fireTimer = 1 / this.fireRate;
     
     // Calculate bullet spawn position (at the end of barrel)
-    const radians = degreesToRadians(this.direction);
+    const adjustAngle = this.direction - 90;
+    const radians = degreesToRadians(adjustAngle);
     const spawnDistance = this.height / 2 + 15;
     const bulletX = this.x + Math.cos(radians) * spawnDistance;
     const bulletY = this.y + Math.sin(radians) * spawnDistance;

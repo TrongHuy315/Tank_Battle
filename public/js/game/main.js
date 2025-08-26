@@ -28,9 +28,9 @@ class Game {
     this.collisionManager = new CollisionManager();
     
     // Game settings
-    this.mapWidth = 20;
-    this.mapHeight = 15;
-    this.tileSize = 40;
+    this.mapWidth = 80;
+    this.mapHeight = 60;
+    this.tileSize = 10; // Quy ước 1 ô trên ma trận là 100 pixel
     
     // Time tracking
     this.lastFrameTime = 0;
@@ -85,8 +85,8 @@ class Game {
     this.map = new GameMap(this.mapWidth, this.mapHeight, this.tileSize);
     
     // Create player tank
-    const playerX = this.tileSize * 2;
-    const playerY = this.tileSize * 2;
+    const playerX = this.tileSize * 3;
+    const playerY = this.tileSize * 3;
     this.player = new Tank(playerX, playerY, 0, '#3498db', true);
     
     // Create some enemy tanks
@@ -199,6 +199,11 @@ class Game {
     // Update enemy AI
     this.updateEnemyAI();
   }
+
+  setMoveDirection(direction) {
+    this.moveDirection = direction;
+    this.moving = direction !== 0;
+  }
   
   /**
    * Handle player input
@@ -206,10 +211,14 @@ class Game {
   handleInput() {
     // Movement
     if (this.keys['ArrowUp'] || this.keys['KeyW']) {
-      this.player.startMoving();
+      this.player.startMoving(); // Di chuyển tiến
     } else {
       this.player.stopMoving();
     }
+    // if (this.keys['ArrowDown'] || this.keys['KeyS']) {
+    //   moveDirection = -1; // Di chuyển lùi
+    // }
+    // this.player.setMoveDirection(moveDirection)
     
     // Rotation
     if (this.keys['ArrowLeft'] || this.keys['KeyA']) {
@@ -374,7 +383,7 @@ class Game {
    */
   resetGame() {
     // Reset player
-    this.player.reset(this.tileSize * 2, this.tileSize * 2, 0);
+    this.player.reset(this.tileSize * 3, this.tileSize * 3, 0);
     this.player.score = 0;
     
     // Reset enemies
