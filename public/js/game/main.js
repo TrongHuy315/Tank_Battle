@@ -85,15 +85,17 @@ class Game {
     this.map = new GameMap(this.mapWidth, this.mapHeight, this.tileSize);
     
     // Create player tank
-    const playerX = this.tileSize * 3;
-    const playerY = this.tileSize * 3;
+    // THAY ĐỔI: Đặt xe tăng người chơi ở góc dưới bên phải
+    const playerX = this.mapWidth * this.tileSize - this.tileSize * 3;
+    const playerY = this.mapHeight * this.tileSize - this.tileSize * 3;
     this.player = new Tank(playerX, playerY, 0, '#3498db', true);
     
     // Create some enemy tanks
     this.enemies = [];
-    this.enemies.push(new Tank(this.tileSize * 17, this.tileSize * 2, 180, '#e74c3c'));
-    this.enemies.push(new Tank(this.tileSize * 17, this.tileSize * 12, 180, '#e67e22'));
-    this.enemies.push(new Tank(this.tileSize * 10, this.tileSize * 7, 270, '#9b59b6'));
+    // THAY ĐỔI: Đặt các bot ở 3 góc còn lại
+    this.enemies.push(new Tank(this.tileSize * 3, this.tileSize * 3, 180, '#e74c3c'));
+    this.enemies.push(new Tank(this.tileSize * 3, this.mapHeight * this.tileSize - this.tileSize * 3, 0, '#e67e22'));
+    this.enemies.push(new Tank(this.mapWidth * this.tileSize - this.tileSize * 3, this.tileSize * 3, 270, '#9b59b6'));
     
     // Set game state to playing
     this.state = GAME_STATE.PLAYING;
@@ -199,26 +201,19 @@ class Game {
     // Update enemy AI
     this.updateEnemyAI();
   }
-
-  setMoveDirection(direction) {
-    this.moveDirection = direction;
-    this.moving = direction !== 0;
-  }
   
   /**
    * Handle player input
    */
   handleInput() {
     // Movement
+    let moveDirection = 0;
     if (this.keys['ArrowUp'] || this.keys['KeyW']) {
-      this.player.startMoving(); // Di chuyển tiến
-    } else {
-      this.player.stopMoving();
+      moveDirection = 1; // Di chuyển tiến
+    }  if (this.keys['ArrowDown'] || this.keys['KeyS']) {
+      moveDirection = -1; // Di chuyển lùi
     }
-    // if (this.keys['ArrowDown'] || this.keys['KeyS']) {
-    //   moveDirection = -1; // Di chuyển lùi
-    // }
-    // this.player.setMoveDirection(moveDirection)
+    this.player.setMoveDirection(moveDirection)
     
     // Rotation
     if (this.keys['ArrowLeft'] || this.keys['KeyA']) {
@@ -255,26 +250,30 @@ class Game {
     for (const enemy of this.enemies) {
       if (!enemy.alive) continue;
       
-      // Every few frames, change behavior (pseudo-random)
-      if (Math.random() < 0.01) {
-        // 80% chance to move, 20% chance to stop
-        if (Math.random() < 0.8) {
-          enemy.startMoving();
+      // THAY ĐỔI: AI mới với 3 lựa chọn di chuyển: tiến, lùi, hoặc dừng
+      if (Math.random() < 0.02) { // Tần suất ra lệnh hành động cao hơn
+        const moveChoice = Math.random();
+        if (moveChoice < 0.5) {
+          enemy.setMoveDirection(1); // 50% đi tiến
+        } else if (moveChoice < 0.75) {
+          enemy.setMoveDirection(-1); // 25% đi lùi
         } else {
-          enemy.stopMoving();
+          enemy.setMoveDirection(0); // 25% dừng lại
         }
         
-        // 50% chance to turn
-        if (Math.random() < 0.5) {
-          // Equal chance of turning left or right
-          enemy.startTurning(Math.random() < 0.5 ? -1 : 1);
+        // Ngẫu nhiên thay đổi hướng quay
+        const turnChoice = Math.random();
+        if (turnChoice < 0.3) {
+          enemy.startTurning(-1);
+        } else if (turnChoice < 0.6) {
+          enemy.startTurning(1);
         } else {
           enemy.stopTurning();
         }
       }
       
-      // Shoot occasionally
-      if (Math.random() < 0.02) {
+      // Tần suất bắn cao hơn để bot nguy hiểm hơn
+      if (Math.random() < 0.03) {
         enemy.fire(this.bulletManager);
       }
     }

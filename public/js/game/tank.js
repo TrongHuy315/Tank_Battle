@@ -44,7 +44,6 @@ class Tank {
     this.bulletDamage = 20;
     
     // Movement state
-    this.moving = false;
     this.turning = 0; // -1 = left, 0 = not turning, 1 = right
     this.moveDirection = 0; // Biến này để lưu hướng di chuyển, 1: tới, -1: lui
   }
@@ -72,10 +71,10 @@ class Tank {
     }
     
     // Handle movement
-    if (this.moving) {
-      const radians = degreesToRadians(this.direction);
-      const nextX = this.x + Math.cos(radians) * this.speed * deltaTime;
-      const nextY = this.y + Math.sin(radians) * this.speed * deltaTime;
+    if (this.moveDirection !== 0) {
+      const radians = degreesToRadians(this.direction - 90);
+      const nextX = this.x + Math.cos(radians) * this.speed * this.moveDirection * deltaTime;
+      const nextY = this.y + Math.sin(radians) * this.speed * this.moveDirection * deltaTime;
       
       // Check for collision with map
       if (!this.checkMapCollision(nextX, nextY, gameMap)) {
@@ -219,20 +218,27 @@ class Tank {
       height: this.height
     };
   }
-  
+
   /**
-   * Start moving the tank
+   * Đặt hướng di chuyển
    */
-  startMoving() {
-    this.moving = true;
+  setMoveDirection(direction) {
+    this.moveDirection = direction;
   }
   
-  /**
-   * Stop moving the tank
-   */
-  stopMoving() {
-    this.moving = false;
-  }
+  // /**
+  //  * Start moving the tank
+  //  */
+  // startMoving() {
+  //   this.moving = true;
+  // }
+  
+  // /**
+  //  * Stop moving the tank
+  //  */
+  // stopMoving() {
+  //   this.moving = false;
+  // }
   
   /**
    * Start turning the tank
@@ -314,7 +320,7 @@ class Tank {
     this.direction = direction;
     this.health = this.maxHealth;
     this.alive = true;
-    this.moving = false;
+    this.moveDirection = 0;
     this.turning = 0;
     this.fireTimer = 0;
   }
